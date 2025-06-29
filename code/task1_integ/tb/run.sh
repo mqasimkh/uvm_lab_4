@@ -2,4 +2,4 @@
 
 source ~/cshrc
 
-xrun -access +rwc -uvm -f ./task1_integ/tb/file.f +SVSEED=random #-gui
+xrun -access +rwc -uvm -f file.f +SVSEED=random #-gui

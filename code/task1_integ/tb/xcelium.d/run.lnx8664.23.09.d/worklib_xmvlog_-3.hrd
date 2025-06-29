@@ -1,0 +1,16 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-INCDIR
+../../yapp/sv
+-INCDIR
+./tb
+-INCDIR
+../../router_rtl
+-I_INCDIR
+/home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d/sv/src
+-DEFINE
+USE_PARAMETERIZED_WRAPPER
+-I_INCDIR
+/home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d/additions/sv

@@ -4,10 +4,10 @@ module tb_top;
     `include "uvm_macros.svh"
     import yapp_pkg::*;
 
-    import channel_pkg::*;
-    import clock_and_reset_pkg::*;
     import hbus_pkg::*;
-
+    import clock_and_reset_pkg::*;
+    import channel_pkg::*;
+    
     `include "router_tb.sv"
     `include "router_test_lib.sv"
 

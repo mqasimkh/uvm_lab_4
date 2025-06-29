@@ -4,11 +4,14 @@ In *Lab # 3* we have a created a fully working `YAPP TX UVC`, now in this lab, n
 
 ## Table of Contents
 
-- [Task_1](#task_1)
-  - [1. Creating Sequences](#1-creating-sequences)
-    - [yapp_1_seq](#yapp_1_seq)
-    - [yapp_012_seq](#yapp_012_seq)
-
+- [Moving Files](#moving-files)
+- [Integrating Channel UVCs](#integrating-channel-uvcs)
+- [Integrating HBU UVC](#integrating-hbu-uvc)
+- [Integrating Clock and Reset UVC](#integrating-clock-and-reset-uvc)
+- [Adding Channel, HBU, and Clock and Reset to hw_top](#adding-channel-hbu-and-clock-and-reset-to-hw_top)
+- [Updating file.f](#updating-filef)
+- [Running Base Test](#running-base-test)
+  - [Topology](#topology)
 
 ---
 
@@ -105,7 +108,7 @@ clock_and_reset_env clk_rst;
 clock_and_reset_vif_config::set(null,"uvm_test_top.tb.clk_rst.*", "vif", hw_top.clk_rst);
 ```
 
-## Adding Channel, HBU, and Clock and Reset  hw_top
+## Adding Channel, HBU, and Clock and Reset to hw_top
 
 After adding all UVCs in `testbench`, added the interface of each individual uvc in `hw_top_dut.sv` (top module).
 

@@ -89,5 +89,4 @@ module hw_top;
     .hwr_rd(hbu.hwr_rd)
     );
 
-
 endmodule

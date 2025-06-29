@@ -22,7 +22,7 @@ module tb_top;
 
         clock_and_reset_vif_config::set(null,"uvm_test_top.tb.clk_rst.*", "vif", hw_top.clk_rst);
 
-        run_test("base_test");
+        run_test("simple_test");
     end
 
 endmodule

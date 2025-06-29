@@ -84,7 +84,7 @@ module hw_top;
 
     // HBUS Interface 
     .haddr(hbu.haddr),
-    .hdata(hbu.hdata),
+    .hdata(hbu.hdata_w),
     .hen(hbu.hen),
     .hwr_rd(hbu.hwr_rd)
     );

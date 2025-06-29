@@ -1,0 +1,10 @@
+s1(29Jun2025:15:17:07):  xrun -access +rwc -uvm -f file.f +SVSEED=random 
+s2(29Jun2025:15:17:21):  xrun -access +rwc -uvm -f file.f +SVSEED=random 
+s3(29Jun2025:16:19:26):  xrun -access +rwc -uvm -f file.f +SVSEED=random 
+s4(29Jun2025:16:22:48):  xrun -access +rwc -uvm -f file.f +SVSEED=random 
+s5(29Jun2025:16:23:10):  xrun -access +rwc -uvm -f file.f +SVSEED=random 
+s6(29Jun2025:16:31:04):  xrun -access +rwc -uvm -f file.f +SVSEED=random 
+s7(29Jun2025:16:31:31):  xrun -access +rwc -uvm -f file.f +SVSEED=random 
+s8(29Jun2025:16:31:41):  xrun -access +rwc -uvm -f file.f +SVSEED=random 
+s9(29Jun2025:16:33:02):  xrun -access +rwc -uvm -f file.f +SVSEED=random 
+s10(29Jun2025:16:38:12):  xrun -access +rwc -uvm -f file.f +SVSEED=random -gui 

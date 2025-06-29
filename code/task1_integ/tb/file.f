@@ -21,7 +21,7 @@
 
 clkgen.sv
 ../../router_rtl/yapp_router.sv
-hw_top_no_dut.sv
+hw_top_dut.sv
 tb_top.sv
 
 // +UVM_TESTNAME=base_test

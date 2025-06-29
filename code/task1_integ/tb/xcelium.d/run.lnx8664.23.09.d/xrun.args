@@ -1,0 +1,11 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-access
++rwc
+-uvm
+-f
+file.f
++SVSEED=random
+-gui

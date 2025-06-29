@@ -12,7 +12,7 @@ In *Lab # 3* we have a created a fully working `YAPP TX UVC`, now in this lab, n
 - [Updating file.f](#updating-filef)
 - [Running Base Test](#running-base-test)
   - [Topology](#topology)
-- [Creating Simple_Test](#creating_simple_test)
+- [Creating Simple_Test](#creating-simple_test)
     - [Results](#results)
 
 ---
@@ -389,18 +389,18 @@ Now the packets collected by `yapp_tx_monitor` and respective channel uvc monito
 
 Because we ran `yap_012_seq` which creates 3 packets and test all addrs i.e. 0, 1 & 2.
 
-*Packet - 1 `addr == 0`*
+**Packet - 1 `addr == 0`**
 
 ![screenshot-2](/screenshots/2.png)
 
-*Packet - 2 `addr == 1`*
+**Packet - 2 `addr == 1`**
 
 ![screenshot-3](/screenshots/3.png)
 
-*Packet - 3 `addr == 2`*
+**Packet - 3 `addr == 2`**
 
 ![screenshot-4](/screenshots/4.png)
 
-*UVM Report Summary*
+**UVM Report Summary**
 
 ![screenshot-5](/screenshots/5.png)

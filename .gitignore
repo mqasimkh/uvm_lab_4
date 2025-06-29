@@ -1,0 +1,7 @@
+code/*.log
+code/qaLog.txt
+code/.simvision
+code/xrun.key
+code/xrun.history
+code/cov_work
+code/xcelium.*

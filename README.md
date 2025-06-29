@@ -12,6 +12,8 @@ In *Lab # 3* we have a created a fully working `YAPP TX UVC`, now in this lab, n
 - [Updating file.f](#updating-filef)
 - [Running Base Test](#running-base-test)
   - [Topology](#topology)
+- [Creating Simple_Test](#creating_simple_test)
+    - [Results](#results)
 
 ---
 
@@ -347,3 +349,58 @@ uvm_test_top                   base_test                  -     @2941
 ```
 
 ![screenshot-1](/screenshots/1.png)
+
+---
+
+## Creating simple_test
+
+Added a new test `simple_test` in `router_test_lib.sv` which extends the `base_test`.
+
+Set the packet using factory `set_type_override_by_type` method to `short_yapp_packet`.
+
+Set the default sequence of `YAPP UVC` to `yapp_012_seq`.
+
+Set the default sequence of all channels UVCs to `channel_rx_resp_seq` using `? wildcard`. `c?` covers all `c0`, `c1` and `c2`.
+
+Set the default sequence of `clock_and_reset` UVS to `clk10_rst5_seq`.
+
+```systemverilog
+class simple_test extends base_test;
+    `uvm_component_utils(simple_test)
+
+    function new (string name = "simple_test", uvm_component parent);
+        super.new(name, parent);
+    endfunction: new
+
+    function void build_phase(uvm_phase phase);
+        super.build_phase(phase);
+        set_type_override_by_type(yapp_packet::get_type(), short_yapp_packet::get_type());
+        uvm_config_wrapper::set(this, "tb.uvc.agent.sequencer.run_phase", "default_sequence", yapp_012_seq::get_type());
+        uvm_config_wrapper::set(this, "tb.c?.rx_agent.sequencer.run_phase", "default_sequence", channel_rx_resp_seq::get_type());
+        uvm_config_wrapper::set(this, "tb.clk_rst.agent.sequencer.run_phase", "default_sequence", clk10_rst5_seq::get_type());
+    endfunction: build_phase
+
+endclass: simple_test
+```
+
+### Results
+
+Now the packets collected by `yapp_tx_monitor` and respective channel uvc monitor should match.
+
+Because we ran `yap_012_seq` which creates 3 packets and test all addrs i.e. 0, 1 & 2.
+
+*Packet - 1 `addr == 0`*
+
+![screenshot-2](/screenshots/2.png)
+
+*Packet - 2 `addr == 1`*
+
+![screenshot-3](/screenshots/3.png)
+
+*Packet - 3 `addr == 2`*
+
+![screenshot-4](/screenshots/4.png)
+
+*UVM Report Summary*
+
+![screenshot-5](/screenshots/5.png)

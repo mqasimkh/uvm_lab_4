@@ -1,6 +1,0 @@
-//
-// File created by:  xrun
-// Do not modify this file
-
-s1::(29Jun2025:15:08:30):( xrun -access +rwc -uvm -f file.f +SVSEED=random )
-s2::(29Jun2025:15:09:44):( xrun -access +rwc -uvm -f file.f +SVSEED=random )

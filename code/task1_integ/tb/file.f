@@ -1,6 +1,9 @@
 -timescale 1ns/1ns
 
 -incdir ../../yapp/sv
+-incdir ../../channel/sv
+-incdir ../../hbus/sv
+-incdir ../../clock_and_reset/sv
 -incdir ./tb
 -incdir ../../router_rtl
 

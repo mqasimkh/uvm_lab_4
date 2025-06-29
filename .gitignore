@@ -1,7 +1,7 @@
-code/*.log
-code/qaLog.txt
-code/.simvision
-code/xrun.key
-code/xrun.history
-code/cov_work
-code/xcelium.*
+code/task1_*/*.log
+code/task1_*/qaLog.txt
+code/task1_*/.simvision
+code/task1_*/xrun.key
+code/task1_*/xrun.history
+code/task1_*/cov_work
+code/task1_*/xcelium.*

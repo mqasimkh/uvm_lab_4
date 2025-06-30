@@ -14,18 +14,18 @@ array set createdGroup {}
 set id [waveform add -signals [subst  {
 	{[format {$uvm:{uvm_test_top.tb.uvc.agent.monitor}.Monitor_YAPP_Packet}]}
 	} ]]
-waveform format $id -height 262
+waveform format $id -height 172
 set id [waveform add -signals [subst  {
 	{[format {$uvm:{uvm_test_top.tb.c0.rx_agent.monitor}.Channel_0_Packet}]}
 	} ]]
-waveform format $id -height 304
+waveform format $id -height 240
 set id [waveform add -signals [subst  {
 	{[format {$uvm:{uvm_test_top.tb.c1.rx_agent.monitor}.Channel_1_Packet}]}
 	} ]]
-waveform format $id -height 190
+waveform format $id -height 222
 set id [waveform add -signals [subst  {
 	{[format {$uvm:{uvm_test_top.tb.c2.rx_agent.monitor}.Channel_2_Packet}]}
 	} ]]
-waveform format $id -height 168
+waveform format $id -height 176
 
-waveform xview limits 0 860000ps
+waveform xview limits 0 930000ps

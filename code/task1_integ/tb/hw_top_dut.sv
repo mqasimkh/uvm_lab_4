@@ -46,7 +46,7 @@ module hw_top;
   //hbu interfaces. It also take local block generated from clkgen, not from clk & rst UVC.
   hbus_if hbu (
     .clock(clock), 
-    .reset(clock)
+    .reset(reset)
   );
 
   //takes clock from clkgen.

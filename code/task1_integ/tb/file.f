@@ -24,5 +24,5 @@ clkgen.sv
 hw_top_dut.sv
 tb_top.sv
 
-// +UVM_TESTNAME=base_test
-+UVM_VERBOSITY=UVM_LOW
++UVM_TESTNAME=test_uvc_integration
++UVM_VERBOSITY=UVM_HIGH

@@ -104,7 +104,7 @@ class yapp_012_seq extends yapp_base_seq;
       `uvm_do_with(req, {addr == 0;})
       `uvm_do_with(req, {addr == 1;})
       //`uvm_do_with(req, {addr == 2;})
-      `uvm_create(req);
+      `uvm_create(req)
       start_item(req);
       req.select = 1;
       ok = req.randomize() with {addr == 2;};
@@ -278,3 +278,37 @@ class yapp_exhaustive_seq extends yapp_base_seq;
   endtask: body
 
 endclass: yapp_exhaustive_seq
+
+//--------------------------------------------------------------------------------
+//                                yapp_four
+//--------------------------------------------------------------------------------
+
+class yapp_four extends yapp_base_seq;
+  `uvm_object_utils(yapp_four)
+  int count;
+
+  function new (string name = "yapp_exhaustive_seq");
+    super.new(name);
+  endfunction: new
+
+  task body();
+    `uvm_info(get_type_name(), "Executing yapp_four sequence", UVM_LOW)
+
+  for (int i = 0; i < 4; i++) begin
+    for (int j = 1; j < 23; j++) begin
+      `uvm_create(req)
+      
+      req.addr = i;
+      req.length = j;
+      foreach (req.payload[k])
+        req.payload[k] = j;
+    start_item(req);
+    finish_item(req);
+    count++;
+    `uvm_info(get_type_name(), $sformatf("Packets Count: %0d", count), UVM_HIGH)
+    end
+  end
+
+  endtask: body
+
+endclass: yapp_four

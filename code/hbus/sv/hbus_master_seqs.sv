@@ -183,6 +183,7 @@ endclass : hbus_get_yapp_regs_seq
 // SEQUENCE: hbus_small_packet_seq - max_pkt_reg = 20, enable_reg = 1
 //------------------------------------------------------------------------------
 class hbus_small_packet_seq extends hbus_base_seq;
+  `uvm_object_utils(hbus_small_packet_seq)
 
   function new(string name="hbus_small_packet_seq");
     super.new(name);
@@ -190,7 +191,6 @@ class hbus_small_packet_seq extends hbus_base_seq;
 
   hbus_set_yapp_regs_seq hbus_seq;
   
-  `uvm_object_utils(hbus_small_packet_seq)
 
   virtual task body();
     `uvm_info(get_type_name(), "Executing sequence", UVM_LOW)

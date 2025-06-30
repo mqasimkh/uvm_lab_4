@@ -20,9 +20,10 @@ module tb_top;
 
         hbus_vif_config::set(null,"uvm_test_top.tb.hbu.*", "vif", hw_top.hbu);
 
-        clock_and_reset_vif_config::set(null,"uvm_test_top.tb.clk_rst.*", "vif", hw_top.clk_rst);
+        clock_and_reset_vif_config::set(null,"uvm_test_top.tb.clk_rst.agent.*", "vif", hw_top.clk_rst);
 
-        run_test("simple_test");
+        run_test();
+        //running test from file.f using +UVM_TESTNAME
     end
 
 endmodule

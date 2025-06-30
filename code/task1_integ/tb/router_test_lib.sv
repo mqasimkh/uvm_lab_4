@@ -62,6 +62,28 @@ class simple_test extends base_test;
 
 endclass: simple_test
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////              test_uvc_integration                   ////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class test_uvc_integration extends base_test;
+    `uvm_component_utils(test_uvc_integration)
+
+    function new (string name = "test_uvc_integration", uvm_component parent);
+        super.new(name, parent);
+    endfunction: new
+
+    function void build_phase(uvm_phase phase);
+        super.build_phase(phase);
+        set_type_override_by_type(yapp_packet::get_type(), short_yapp_packet::get_type());
+        uvm_config_wrapper::set(this, "tb.uvc.agent.sequencer.run_phase", "default_sequence", yapp_four::get_type());
+        uvm_config_wrapper::set(this, "tb.c?.rx_agent.sequencer.run_phase", "default_sequence", channel_rx_resp_seq::get_type());
+        uvm_config_wrapper::set(this, "tb.clk_rst.agent.sequencer.run_phase", "default_sequence", clk10_rst5_seq::get_type());
+        uvm_config_wrapper::set(this, "tb.hbu.masters[?].sequencer.run_phase", "default_sequence", hbus_small_packet_seq::get_type());
+    endfunction: build_phase
+
+endclass: simptest_uvc_integrationle_test
+
 // /////////////////////////////////////////////////////////////////////////////////////////////////////
 // ////////////////////////                Short Packet Test                    ////////////////////////
 // /////////////////////////////////////////////////////////////////////////////////////////////////////

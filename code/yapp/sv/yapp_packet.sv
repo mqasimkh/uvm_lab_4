@@ -23,9 +23,12 @@ class yapp_packet extends uvm_sequence_item;
     endfunction: new
 
     function bit [7:0] calc_parity();
-        bit [7:0] return_parity = 0;
-        foreach(payload[i])
+        bit [7:0] return_parity=0;
+        foreach(payload[i]) begin 
             return_parity = return_parity ^ payload[i];
+        end 
+        return_parity ^= {length, addr};
+
         return return_parity;
     endfunction: calc_parity
 

@@ -285,7 +285,9 @@ endclass: yapp_exhaustive_seq
 
 class yapp_four extends yapp_base_seq;
   `uvm_object_utils(yapp_four)
-  int count;
+  int count=0;
+   int count_n=0;
+  int b_parity=0;
 
   function new (string name = "yapp_exhaustive_seq");
     super.new(name);
@@ -300,12 +302,29 @@ class yapp_four extends yapp_base_seq;
       
       req.addr = i;
       req.length = j;
-      foreach (req.payload[k])
-        req.payload[k] = j;
+
+      if (count < 18) begin
+        req.parity_type = BAD_PARITY;
+        b_parity++;
+        `uvm_info(get_type_name(), $sformatf("Bad Parity Count: %0d", b_parity), UVM_LOW)
+      end
+      else begin 
+        count_n++;
+      end
+
+      req.payload = new[j];
+      foreach (req.payload[j])
+        req.payload[j] = j;
+    
+    req.set_parity();
+    //because randomization method not called, so manually called the set_parity() method.
     start_item(req);
     finish_item(req);
     count++;
-    `uvm_info(get_type_name(), $sformatf("Packets Count: %0d", count), UVM_HIGH)
+    `uvm_info(get_type_name(), $sformatf("Packets Count: %0d", count), UVM_LOW)
+    `uvm_info(get_type_name(), $sformatf("Good Parity Packets: %0d", count_n), UVM_LOW)
+    `uvm_info(get_type_name(), $sformatf("Bad Parity Packets: %0d", count - count_n), UVM_LOW)
+
     end
   end
 

@@ -12,8 +12,11 @@ In *Lab # 3* we have a created a fully working `YAPP TX UVC`, now in this lab, n
 - [Updating file.f](#updating-filef)
 - [Running Base Test](#running-base-test)
   - [Topology](#topology)
-- [Creating Simple_Test](#creating-simple_test)
+- [Creating Simple_Test](#creating-simple-test)
     - [Results](#results)
+- [Creating yapp_four Sequence](#creating-yapp-four-sequence)
+- [Creating test_uvc_integration Test](#creating-test-uvc-integration-test)
+- [Running test_uvc_integration Test](#runing-test-uvc-integration-test)
 
 ---
 

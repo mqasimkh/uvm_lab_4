@@ -391,16 +391,37 @@ Because we ran `yap_012_seq` which creates 3 packets and test all addrs i.e. 0, 
 
 **Packet - 1 `addr == 0`**
 
+`Terminal`
+
 ![screenshot-2](/screenshots/2.png)
+
+`GUI`
+
+![screenshot-6](/screenshots/6.png)
 
 **Packet - 2 `addr == 1`**
 
+`Terminal`
+
 ![screenshot-3](/screenshots/3.png)
+
+`GUI`
+
+![screenshot-7](/screenshots/7.png)
 
 **Packet - 3 `addr == 2`**
 
+`Terminal`
+
 ![screenshot-4](/screenshots/4.png)
+
+`GUI`
+
+![screenshot-8](/screenshots/8.png)
 
 **UVM Report Summary**
 
+`Terminal`
+
 ![screenshot-5](/screenshots/5.png)
+

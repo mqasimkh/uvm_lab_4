@@ -486,13 +486,12 @@ endclass: yapp_four
 
 ## Creating test_uvc_integration Test
 
-Created a new test named `test_uvc_integration` which extends `base_test`.
+Created a new test named `test_uvc_integration` which extends `base_test`:
 
 - Set the default sequence of `yapp uvc` to newly created `yapp_four`
 - Set the default sequence of `channel uvc` to newly created `channel_rx_resp_seq`
 - Set the default sequence of `clock and reset` to newly created `clk10_rst5_seq`
 - Set the default sequence of `hbu uvc` to newly created `hbus_small_packet_seq`
-
 
 ```systemverilog
 class test_uvc_integration extends base_test;
@@ -514,3 +513,14 @@ class test_uvc_integration extends base_test;
 endclass: test_uvc_integration
 ```
 
+## Running test_uvc_integration Test
+
+Ran the test, and it generated `88` packets as expected out of which `18` were with bad parity.
+
+![screenshot-9](/screenshots/9.png)
+
+Checked in the waveform and the packet with bad parity `error` signal was `1`. See screenshot:
+
+![screenshot-10](/screenshots/10.png)
+
+![screenshot-11](/screenshots/11.png)

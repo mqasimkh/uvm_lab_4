@@ -425,3 +425,92 @@ Because we ran `yap_012_seq` which creates 3 packets and test all addrs i.e. 0, 
 
 ![screenshot-5](/screenshots/5.png)
 
+## Creating yapp_four Sequence
+
+Created a new `yapp_four` sequence which generates 22 packets for each addr including invalid `addr == 3`.
+
+Didn't call the randomize function as manually set values for `addr`, `length` and also init `payload` values.
+
+Set the parity such that 20% time (18 packets), parity is set as `bad parity` in transaction and rest `good parity`.
+
+```systemverilog
+class yapp_four extends yapp_base_seq;
+  `uvm_object_utils(yapp_four)
+  int count=0;
+   int count_n=0;
+  int b_parity=0;
+
+  function new (string name = "yapp_exhaustive_seq");
+    super.new(name);
+  endfunction: new
+
+  task body();
+    `uvm_info(get_type_name(), "Executing yapp_four sequence", UVM_LOW)
+
+  for (int i = 0; i < 4; i++) begin
+    for (int j = 1; j < 23; j++) begin
+      `uvm_create(req)
+      
+      req.addr = i;
+      req.length = j;
+
+      if (count < 18) begin
+        req.parity_type = BAD_PARITY;
+        b_parity++;
+        `uvm_info(get_type_name(), $sformatf("Bad Parity Count: %0d", b_parity), UVM_LOW)
+      end
+      else begin 
+        count_n++;
+      end
+
+      req.payload = new[j];
+      foreach (req.payload[j])
+        req.payload[j] = j;
+    
+    req.set_parity();
+    //because randomization method not called, so manually called the set_parity() method.
+    start_item(req);
+    finish_item(req);
+    count++;
+    `uvm_info(get_type_name(), $sformatf("Packets Count: %0d", count), UVM_LOW)
+    `uvm_info(get_type_name(), $sformatf("Good Parity Packets: %0d", count_n), UVM_LOW)
+    `uvm_info(get_type_name(), $sformatf("Bad Parity Packets: %0d", count - count_n), UVM_LOW)
+
+    end
+  end
+
+  endtask: body
+
+endclass: yapp_four
+```
+
+## Creating test_uvc_integration Test
+
+Created a new test named `test_uvc_integration` which extends `base_test`.
+
+- Set the default sequence of `yapp uvc` to newly created `yapp_four`
+- Set the default sequence of `channel uvc` to newly created `channel_rx_resp_seq`
+- Set the default sequence of `clock and reset` to newly created `clk10_rst5_seq`
+- Set the default sequence of `hbu uvc` to newly created `hbus_small_packet_seq`
+
+
+```systemverilog
+class test_uvc_integration extends base_test;
+    `uvm_component_utils(test_uvc_integration)
+
+    function new (string name = "test_uvc_integration", uvm_component parent);
+        super.new(name, parent);
+    endfunction: new
+
+    function void build_phase(uvm_phase phase);
+        super.build_phase(phase);
+        set_type_override_by_type(yapp_packet::get_type(), short_yapp_packet::get_type());
+        uvm_config_wrapper::set(this, "tb.uvc.agent.sequencer.run_phase", "default_sequence", yapp_four::get_type());
+        uvm_config_wrapper::set(this, "tb.c?.rx_agent.sequencer.run_phase", "default_sequence", channel_rx_resp_seq::get_type());
+        uvm_config_wrapper::set(this, "tb.clk_rst.agent.sequencer.run_phase", "default_sequence", clk10_rst5_seq::get_type());
+        uvm_config_wrapper::set(this, "tb.hbu.masters[?].sequencer.run_phase", "default_sequence", hbus_small_packet_seq::get_type());
+    endfunction: build_phase
+
+endclass: test_uvc_integration
+```
+

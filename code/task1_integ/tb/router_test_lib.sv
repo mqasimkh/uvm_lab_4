@@ -82,7 +82,7 @@ class test_uvc_integration extends base_test;
         uvm_config_wrapper::set(this, "tb.hbu.masters[?].sequencer.run_phase", "default_sequence", hbus_small_packet_seq::get_type());
     endfunction: build_phase
 
-endclass: simptest_uvc_integrationle_test
+endclass: test_uvc_integration
 
 // /////////////////////////////////////////////////////////////////////////////////////////////////////
 // ////////////////////////                Short Packet Test                    ////////////////////////
